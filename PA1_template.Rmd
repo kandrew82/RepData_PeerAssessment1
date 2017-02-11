@@ -23,7 +23,7 @@ totbyday<-aggregate(activity$steps,by=list(d=activity$date), FUN=sum)
 a<-totbyday[!is.na(totbyday$x),]
 hist(a$x,xlab="Steps By Day",main="")
 ```
-![plot](figure/hist1.png) 
+![plot](instruction_fig/hist1.png) 
 
 ## Mean and median number of steps taken each day
 
