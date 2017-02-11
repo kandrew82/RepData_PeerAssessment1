@@ -21,9 +21,10 @@ Aggregate total steps by date, then remove NA and draw the histogram
 ```{r}
 totbyday<-aggregate(activity$steps,by=list(d=activity$date), FUN=sum)
 a<-totbyday[!is.na(totbyday$x),]
+```
+```{r fig.align='center', fig.height=4}
 hist(a$x,xlab="Steps By Day",main="")
 ```
-![plot](instruction_fig/hist1.png) 
 
 ## Mean and median number of steps taken each day
 
@@ -41,6 +42,8 @@ Aggregate the average number of steps by date and draw the time series plot
 
 ```{r}
 avgbyday<-aggregate(activity$steps,by=list(d=activity$date), FUN=mean)
+```
+```{r fig.align='center', fig.height=4}
 plot.ts(avgbyday$x,xlab= "",ylab="Avg Steps by Day",axes=FALSE)
 xticks=c(1,61)
 axis(1, at=xticks, labels=c("01/10/2012","30/11/2012"))
@@ -78,6 +81,8 @@ for (i in 1:nrow(activity_mod)) {
 As the first plot but with the new imputed values
 ```{r}
 totbyday_mod<-aggregate(activity_mod$steps,by=list(d=activity_mod$date), FUN=sum)
+```
+```{r fig.align='center', fig.height=4}
 hist(totbyday_mod$x,xlab="Steps By Day",main="")
 ```
 
@@ -97,7 +102,7 @@ avgweekend<-aggregate(activity_weekend$steps,by=list(d=activity_weekend$interval
 
 Then plot both series
 
-```{r}
+```{r fig.align='center', fig.height=4}
 par(mfrow=c(1,2))
 plot.ts(avgweekday$x,xlab= "",ylab="Avg Steps by Day",axes=FALSE,main="WEEKDAYS")
 xticks=c(0,144,288)
